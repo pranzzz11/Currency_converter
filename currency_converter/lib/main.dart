@@ -13,8 +13,8 @@ class MyApp extends StatelessWidget{
   // key is a class that helps flutter to differentiate between widgets
   @override
   Widget build(BuildContext context){
-    return MaterialApp(
-      home:MaterialHomepage(),
+    return const MaterialApp(
+      home:CurrencyConverterMaterialPage(),
     );
   }
 }

@@ -1,49 +1,79 @@
 import 'package:flutter/material.dart';
 
-class MaterialHomepage extends StatelessWidget {
-  const MaterialHomepage({super.key});
+class CurrencyConverterMaterialPage extends StatefulWidget{
+  const CurrencyConverterMaterialPage({super.key});
+
+
+  @override
+  State <CurrencyConverterMaterialPage>createState() =>
+     _CurrencyConverterMaterialPage();
+  }
+  
+
+class _CurrencyConverterMaterialPage 
+     extends State <CurrencyConverterMaterialPage>{
+  double result=0;
+final TextEditingController textEditingController = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
+    print('rebuild');
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 77, 76, 76),
+      backgroundColor: const Color.fromARGB(255, 244, 242, 242),
+      appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 244, 242, 242),
+        elevation: 0,
+        title: const Text('Currency Converter'),
+        centerTitle: true,
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Text(
-              '0',
-              style: TextStyle(
+            Text(
+              result.toString(),
+              style: const TextStyle(
                 fontSize: 35,
                 fontWeight: FontWeight.bold,
-                color: Color.fromARGB(255, 250, 245, 248),
+                color: Color.fromARGB(255, 21, 22, 22),
               ),
             ),
 
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextField(
+                controller: textEditingController,
                 style: const TextStyle(
-                  color: Color.fromARGB(255, 22, 21, 22),
+                  color: Color.fromARGB(255, 249, 249, 250),
                 ),
                 decoration: const InputDecoration(
-                  hintText: 'Please enter the amount in USD',
-                  hintStyle: TextStyle(
-                    color: Color.fromARGB(255, 248, 104, 226),
+                hintText: 'Please enter the amount in USD',
+                hintStyle: TextStyle(
+                color: Color.fromARGB(255, 248, 249, 250),
+                 ),
+                    prefixIcon: Icon(Icons.monetization_on),
+                 prefixIconColor: Color.fromARGB(255, 243, 243, 244),
+                 filled: true,
+                fillColor: Color.fromARGB(255, 89, 185, 244),
+
+                 enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(
+                 Radius.circular(30),
                   ),
-                  prefixIcon: Icon(Icons.monetization_on),
-                  prefixIconColor: Color.fromARGB(255, 245, 115, 206),
-                  filled: true,
-                  fillColor: Color.fromARGB(244, 242, 200, 240),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(30),
-                    ),
-                    borderSide: BorderSide.none,
-                  ),
+                        borderSide: BorderSide.none,
+                 ),
+
+                 focusedBorder: OutlineInputBorder(
+                 borderRadius: BorderRadius.all(
+                 Radius.circular(30),
                 ),
-                keyboardType: const TextInputType.numberWithOptions(
+                 borderSide: BorderSide.none,
+                 ),
+               ),
+
+                 keyboardType: const TextInputType.numberWithOptions(
                   decimal: true,
                 ),
               ),
@@ -51,11 +81,14 @@ class MaterialHomepage extends StatelessWidget {
 
             TextButton(
               onPressed: () {
-                debugPrint('Button clicked');
+                
+                setState(() {
+                   result = double.parse(textEditingController.text) * 91.63;
+                });
               },
               style: TextButton.styleFrom(
-                backgroundColor: const Color.fromARGB(255, 255, 94, 206),
-                foregroundColor: Colors.white,
+                backgroundColor: const Color.fromARGB(255, 52, 51, 51),
+                foregroundColor: const Color.fromARGB(255, 248, 247, 247),
                 padding: const EdgeInsets.symmetric(
                   horizontal: 30,
                   vertical: 15,
